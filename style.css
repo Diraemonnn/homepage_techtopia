@@ -1,0 +1,2021 @@
+/* ==========================================================================
+   1. Reset & Base Styles
+   ========================================================================== */
+
+*,
+*::before,
+*::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; /* Base font size */
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  line-height: 1.6;
+  color: #222;
+  background: #f3f4f6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hapus .pixel-art agar tidak memaksa font pixel */
+
+/* ==========================================================================
+   2. Typography
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+p {
+  margin-bottom: 1.5rem;
+}
+
+/* ==========================================================================
+   3. Header Styles
+   ========================================================================== */
+
+.header {
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Header always visible and clear on mobile */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(255,255,255,0.98);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  padding: 0.5rem 0;
+}
+
+@media (max-width: 900px) {
+  .header {
+    padding: 0.3rem 0;
+  }
+  .nav-wrapper {
+    height: 56px;
+  }
+  .logo-img {
+    height: 32px;
+  }
+}
+
+.nav-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.05);
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-link {
+  color: #222;
+  text-decoration: none;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
+
+.btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn-primary {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #2563eb;
+}
+
+.btn-secondary {
+  background: #fbbf24;
+  color: #222;
+}
+
+.btn-secondary:hover {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+}
+
+.btn-outline:hover {
+  background: #3b82f6;
+  color: #fff;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+}
+
+/* ==========================================================================
+   4. Button Styles
+   ========================================================================== */
+
+.btn {
+  align-items: center;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 600;
+  gap: 0.5rem;
+  overflow: hidden;
+  padding: 12px 24px;
+  position: relative;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  content: "";
+  height: 100%;
+  left: -100%;
+  position: absolute;
+  top: 0;
+  transition: left 0.5s;
+  width: 100%;
+}
+
+.btn:hover::before {
+  left: 100%;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+  color: white;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #3b82f6;
+  color: #3b82f6;
+}
+
+.btn-outline:hover {
+  background: #3b82f6;
+  color: white;
+  transform: translateY(-2px);
+}
+
+.btn-large {
+  font-size: 16px;
+  padding: 16px 32px;
+}
+
+/* ==========================================================================
+   5. Hero Section
+   ========================================================================== */
+
+/* Hero Section Layout Baru */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url('images/background.png') center/cover no-repeat;
+  z-index: 1;
+  padding: 120px 0 40px 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 30, 48, 0.45); /* overlay gelap agar teks tetap terbaca */
+  z-index: 2;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  z-index: 3;
+  align-items: center;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  text-shadow: 0 4px 32px rgba(59,130,246,0.18);
+  margin-bottom: 0.7rem;
+}
+
+.hero-theme {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: none;
+  border: none;
+  padding: 0.7rem 0;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 1.1rem 0;
+  box-shadow: none;
+  margin-bottom: 2.2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mascot-img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 32px #fff) drop-shadow(0 8px 32px rgba(59,130,246,0.18));
+  outline: none;
+  background: none;
+  border-radius: 0;
+}
+
+.mascot-animate {
+  animation: mascotFloat 3.5s ease-in-out infinite;
+}
+
+@keyframes mascotFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-24px) scale(1.04); }
+}
+
+/* Hero Centered Layout */
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1.2rem;
+  position: relative;
+  z-index: 3;
+  min-height: 70vh;
+}
+
+/* Hero Section Typography Refinement */
+.hero-title {
+  font-size: 3.2rem;
+  font-weight: 900;
+  margin: 0.3rem 0 0.1rem 0;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: 0.2px;
+  max-width: 100vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.hero-theme {
+  font-size: 1.22rem;
+  font-weight: 600;
+  color: #fbbf24;
+  margin-bottom: 0.6rem;
+  margin-top: 0.1rem;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  padding: 0;
+}
+
+.hero-description {
+  font-size: 1.08rem;
+  color: #fff;
+  margin-bottom: 1.1rem;
+  margin-top: 0.1rem;
+  line-height: 1.7;
+  letter-spacing: 0.1px;
+  padding: 0;
+}
+
+.hero-center {
+  gap: 0.9rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 0.5rem;
+}
+
+.hero-buttons .btn {
+  font-size: 1.1rem;
+  padding: 16px 32px;
+  border-radius: 12px;
+  min-width: 180px;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(59,130,246,0.10);
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.hero-buttons .btn-large {
+  font-size: 1.15rem;
+  padding: 18px 36px;
+}
+
+/* ==========================================================================
+   6. Floating Elements (Optional)
+   ========================================================================== */
+
+.floating-elements {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.floating-element {
+  animation: float 6s ease-in-out infinite;
+  font-size: 2rem;
+  opacity: 0.7;
+  position: absolute;
+}
+
+/* Enhanced Floating Elements */
+.tech-icon {
+  cursor: pointer;
+  font-size: 2.5rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.tech-icon:hover {
+  opacity: 1;
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* ==========================================================================
+   7. Animations
+   ========================================================================== */
+
+@keyframes float {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    opacity: 0.9;
+    transform: translateY(-10px) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px) rotate(90deg);
+  }
+  75% {
+    opacity: 0.9;
+    transform: translateY(-10px) rotate(135deg);
+  }
+}
+
+@keyframes backgroundPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes buttonPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(245, 158, 11, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+  }
+}
+
+/* ==========================================================================
+   8. Section Styles
+   ========================================================================== */
+
+section {
+  padding: 4rem 0;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.section-title {
+  color: #1f2937;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.section-title::after {
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 2px;
+  bottom: -10px;
+  content: "";
+  height: 4px;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 80px;
+}
+
+.section-subtitle {
+  color: #6b7280;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* ==========================================================================
+   9. Objectives Section
+   ========================================================================== */
+
+.objectives {
+  background: #f8fafc;
+}
+
+.objectives-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Ubah menjadi 2 kolom */
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.objective-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 2rem;
+  text-align: center;
+  transform-style: preserve-3d;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.objective-card:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+  transform: translateY(-15px) rotateX(5deg) rotateY(5deg);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   10. Competitions Section
+   ========================================================================== */
+
+.competitions {
+  background: #fff;
+}
+
+.competitions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Ubah menjadi 2 kolom */
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.competition-card {
+  background: #f3f4f6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.competition-logo {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.competition-logo img {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.card-header {
+  margin-bottom: 1rem;
+}
+
+.card-title {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.card-description {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.registration-info {
+  margin-bottom: 1rem;
+}
+
+.registration-wave {
+  display: flex;
+  justify-content: space-between;
+  background: #e0e7ff;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.wave-label {
+  font-weight: 600;
+  color: #3b82f6;
+}
+
+.wave-date {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   11. FAQ Section
+   ========================================================================== */
+
+.faq {
+  background: linear-gradient(135deg, #18181b 60%, #1e293b 100%);
+  padding: 4rem 0;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.faq-item {
+  background: #23272f;
+  border: 1.5px solid #2C2C2C;
+  border-radius: 12px;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+  box-shadow: 0 2px 12px rgba(59,130,246,0.06);
+}
+
+.faq-item:hover {
+  border-color: #3b82f6;
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 6px 24px rgba(59,130,246,0.12);
+}
+
+.faq-question {
+  padding: 1.3rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: #23272f;
+  transition: background-color 0.3s;
+}
+
+.faq-question h3 {
+  font-size: 1.08rem;
+  color: #fbbf24;
+  margin: 0;
+  padding-right: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.faq-question i {
+  color: #3b82f6;
+  font-size: 1.3rem;
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  background: #1e222a;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.faq-item.active .faq-answer {
+  max-height: 350px;
+  padding: 1.3rem 1.8rem;
+}
+
+.faq-answer p {
+  color: #e5e7eb;
+  margin: 0;
+  font-size: 1.01rem;
+  line-height: 1.7;
+}
+
+/* ==========================================================================
+   12. Footer
+   ========================================================================== */
+
+.footer {
+  background: #222;
+  color: #fff;
+  padding: 2rem 0 1rem 0;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logos {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.footer-logo img {
+  height: 60px;
+  width: 60px;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo:hover img {
+  transform: scale(1.1);
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.social-link {
+  align-items: center;
+  background: #374151;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  width: 40px;
+}
+
+.social-link:hover {
+  background: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.footer-title {
+  color: #f9fafb;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.footer-links {
+  list-style: none;
+}
+
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+  color: #d1d5db;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: #3b82f6;
+}
+
+.footer-links span {
+  color: #9ca3af;
+}
+
+.contact-info {
+  color: #d1d5db;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  text-align: center;
+  color: #bbb;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   13. Section Transition Animations
+   ========================================================================== */
+
+.section-transition {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.section-transition.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   14. Enhanced Button Animations
+   ========================================================================== */
+
+.pulse-animation {
+  animation: buttonPulse 2s ease-in-out infinite;
+}
+
+.btn-large {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-large::after {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  content: "";
+  height: 0;
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+  width: 0;
+}
+
+.btn-large:hover::after {
+  height: 300px;
+  width: 300px;
+}
+
+/* ==========================================================================
+   15. Entrance Animations
+   ========================================================================== */
+
+.animate-entrance {
+  animation: entranceAnimation 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes entranceAnimation {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(100px) rotate(-10deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1) translateY(-30px) rotate(5deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0) rotate(0deg);
+  }
+}
+
+.animate-text-sequence {
+  animation: textSequence 2s ease-out forwards;
+}
+
+@keyframes textSequence {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered Animation Delays */
+.delay-1 {
+  animation-delay: 0.3s;
+}
+.delay-2 {
+  animation-delay: 0.6s;
+}
+.delay-3 {
+  animation-delay: 0.9s;
+}
+.delay-4 {
+  animation-delay: 1.2s;
+}
+.delay-5 {
+  animation-delay: 1.5s;
+}
+
+/* ==========================================================================
+   16. Scroll-triggered Animations
+   ========================================================================== */
+
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-up.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-left.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-in-right.animated {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ==========================================================================
+   17. Responsive Design
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .hero-left, .hero-right {
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-title { font-size: 2rem; }
+  .mascot-img { width: 200px; }
+  .objectives-grid,
+  .competitions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+  .hero-content { padding: 1.2rem 0.5rem 2rem 0.5rem; }
+  .hero-title { font-size: 2rem; }
+  .hero-center { gap: 0.7rem; }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding: 80px 0 20px 0;
+  }
+  .hero-title { font-size: 1.2rem; }
+  .hero-theme { font-size: 1rem; }
+  .hero-description { font-size: 0.95rem; padding: 0.7rem 0.5rem; }
+  .mascot-img { width: 120px; }
+  .hero-buttons { padding: 1rem 0.2rem; }
+  .hero-buttons .btn { min-width: 120px; padding: 12px 10px; font-size: 0.95rem; }
+  .hero-title { font-size: 1.2rem; }
+  .hero-theme { font-size: 1rem; }
+  .hero-description { font-size: 0.95rem; }
+  .hero-center { gap: 0.5rem; }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .mobile-toggle {
+    display: flex;
+  }
+
+  .nav-list {
+    display: none;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+
+  .nav-list.active {
+    display: flex;
+  }
+
+  .mobile-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .mobile-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .mobile-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .objectives-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .competitions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-actions {
+    flex-direction: column;
+  }
+
+  .footer-content {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .mascot-img {
+    width: 180px;
+  }
+
+  .hero-theme {
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.95rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .hero-buttons {
+    padding: 1.5rem;
+    gap: 1rem;
+  }
+
+  .hero-buttons .btn {
+    min-width: 180px;
+    padding: 16px 24px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-title {
+    font-size: 1.5rem;
+  }
+
+  .hero-theme {
+    font-size: 1rem;
+  }
+
+  .hero-description {
+    font-size: 0.95rem;
+  }
+
+  .mascot-img {
+    max-width: 100px;
+  }
+
+  .faq-container {
+    padding: 0 0.5rem;
+  }
+}
+
+/* Loading Animation */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.loading {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Smooth Scrolling Enhancement */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Hero Section - Fix Mascot Size */
+.hero-mascot-container {
+    max-width: 200px;
+    margin: 0 auto 2rem;
+}
+
+.mascot-img {
+    width: 100%;
+    height: auto;
+    max-width: 180px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Competition Card - Fix Image Size */
+.competition-logo {
+    height: 80px;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.competition-logo img {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+/* FAQ Section Redesign */
+.faq {
+    background: #f8fafc;
+    padding: 4rem 0;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+.faq-item {
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    margin-bottom: 1.2rem;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
+    box-shadow: 0 2px 12px rgba(59,130,246,0.06);
+}
+
+.faq-item:hover {
+    border-color: #3b82f6;
+    transform: translateY(-3px) scale(1.01);
+    box-shadow: 0 6px 24px rgba(59,130,246,0.12);
+}
+
+.faq-question {
+    padding: 1.3rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: #fff;
+    transition: background-color 0.3s;
+}
+
+.faq-question h3 {
+    font-size: 1.08rem;
+    color: #3b82f6;
+    margin: 0;
+    padding-right: 2rem;
+    line-height: 1.5;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.faq-question i {
+    color: #3b82f6;
+    font-size: 1.3rem;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    background: #f8fafc;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+
+.faq-item.active .faq-answer {
+    max-height: 350px;
+    padding: 1.3rem 1.8rem;
+}
+
+.faq-answer p {
+    color: #374151;
+    margin: 0;
+    font-size: 1.01rem;
+    line-height: 1.7;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .hero-mascot-container {
+        max-width: 150px;
+    }
+    
+    .mascot-img {
+        max-width: 140px;
+    }
+    
+    .competition-logo {
+        height: 60px;
+    }
+    
+    .competition-logo img {
+        max-width: 60px;
+        max-height: 60px;
+    }
+    
+    .faq-question h3 {
+        font-size: 0.95rem;
+    }
+}
+
+/* Import font Pixelate (atau Press Start 2P jika Pixelate tidak ada di Google Fonts) */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.pixel-font {
+  font-family: 'Press Start 2P', monospace;
+  letter-spacing: 1px;
+}
+
+.hero-title, .hero-theme, .hero-description {
+  text-shadow: none;
+  -webkit-text-stroke: 0;
+  border: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 60%, rgba(0,0,0,0.45) 100%);
+}
+
+/* Hapus frame pada maskot, tambahkan efek cahaya */
+.mascot-img {
+  width: 400px;
+  max-width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 0 32px #fff) drop-shadow(0 8px 32px rgba(59,130,246,0.18));
+  /* Hapus outline, background, border-radius */
+  outline: none;
+  background: none;
+  border-radius: 0;
+}
+
+/* Hilangkan background dan border pada tipografi hero section */
+.hero-theme {
+  color: #fbbf24;
+  background: none;
+  border: none;
+  padding: 0.7rem 0;
+}
+
+.hero-description {
+  color: #fff;
+  background: none;
+  border: none;
+  padding: 1.1rem 0;
+  box-shadow: none;
+}
+
+@media (max-width: 900px) {
+  .mascot-img { width: 220px; }
+}
+@media (max-width: 600px) {
+  .mascot-img { width: 120px; }
+}
+
+/* Hero Section Typography & Layout Improvement */
+.hero-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 0.6rem;
+  position: relative;
+  z-index: 3;
+  min-height: 70vh;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 2.7rem;
+  font-weight: 900;
+  margin: 0.3rem 0 0.1rem 0;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: 0.5px;
+  max-width: 100vw;
+}
+
+.hero-theme {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #fbbf24;
+  margin-bottom: 0.3rem;
+  margin-top: 0.1rem;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+  padding: 0;
+  max-width: 90vw;
+}
+
+.hero-description {
+  font-size: 1.18rem;
+  color: #fff;
+  margin-bottom: 0.7rem;
+  margin-top: 0.1rem;
+  line-height: 1.6;
+  letter-spacing: 0.1px;
+  padding: 0;
+  max-width: 90vw;
+}
+
+@media (max-width: 900px) {
+  .hero-title { font-size: 1.7rem; max-width: 98vw; white-space: normal; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 1.1rem; max-width: 98vw; white-space: normal; }
+}
+
+/* Competition Card Flex Layout */
+.competition-card-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.competition-card-text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.competition-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(59,130,246,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+}
+
+.competition-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px;
+  max-width: 120px;
+  height: 90px;
+  margin-left: 1.2rem;
+}
+.competition-logo img {
+  max-width: 100%;
+  max-height: 80px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(59,130,246,0.10));
+}
+
+.card-header {
+  margin-bottom: 0.2rem;
+}
+.card-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  color: #222;
+  margin-bottom: 0.1rem;
+}
+.card-description {
+  color: #555;
+  font-size: 1.01rem;
+  margin-bottom: 0.2rem;
+}
+
+@media (max-width: 900px) {
+  .competition-card-flex {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .competition-logo {
+    margin-left: 0;
+    margin-bottom: 0.7rem;
+    align-self: flex-end;
+  }
+  .competition-card {
+    padding: 1.2rem 0.7rem;
+  }
+}
+
+/* Harga pada gelombang lomba */
+.wave-price {
+  color: #16a34a;
+  font-weight: 700;
+  margin-left: 0.7rem;
+  font-size: 1.01rem;
+  letter-spacing: 0.1px;
+}
+
+.competition-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(59,130,246,0.10), 0 1.5px 6px rgba(0,0,0,0.04);
+  padding: 1.4rem 1.1rem 1.2rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+  transition: box-shadow 0.2s;
+}
+.competition-card:hover {
+  box-shadow: 0 8px 32px rgba(59,130,246,0.16), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.competition-card-flex {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.1rem;
+}
+
+.competition-card-text {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.competition-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+  max-width: 100px;
+  height: 80px;
+  margin-left: 1rem;
+}
+.competition-logo img {
+  max-width: 100%;
+  max-height: 70px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 8px rgba(59,130,246,0.10));
+}
+
+@media (max-width: 900px) {
+  .competition-card-flex {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 0.7rem;
+  }
+  .competition-logo {
+    margin-left: 0;
+    margin-bottom: 0.5rem;
+    align-self: flex-end;
+    min-width: 60px;
+    max-width: 80px;
+    height: 60px;
+  }
+  .competition-logo img {
+    max-height: 50px;
+  }
+  .competition-card {
+    padding: 1rem 0.5rem 0.9rem 0.5rem;
+    min-height: 160px;
+  }
+  .card-title { font-size: 1rem; }
+  .card-description { font-size: 0.93rem; }
+  .wave-price { font-size: 0.95rem; }
+}
+
+/* Competition Card Mobile Fix */
+@media (max-width: 900px) {
+  .competitions-grid {
+    gap: 1.2rem;
+  }
+  .competition-card {
+    padding: 0.7rem 0.3rem 0.7rem 0.3rem;
+    min-height: 120px;
+    margin-bottom: 0.7rem;
+  }
+  .competition-card-flex {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  .competition-card-text {
+    gap: 0.2rem;
+  }
+  .competition-logo {
+    margin-left: 0;
+    margin-bottom: 0.3rem;
+    align-self: center;
+    min-width: 48px;
+    max-width: 60px;
+    height: 48px;
+  }
+  .competition-logo img {
+    max-height: 40px;
+  }
+  .card-title { font-size: 0.98rem; }
+  .card-description { font-size: 0.89rem; }
+  .wave-price { font-size: 0.91rem; }
+  .card-actions {
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+  .btn, .btn-large {
+    width: 100%;
+    min-width: 0;
+    font-size: 0.98rem;
+    padding: 12px 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 0.1rem 0;
+  }
+  .nav-wrapper {
+    height: 44px;
+  }
+  .logo-img {
+    height: 24px;
+  }
+  .competition-card {
+    padding: 0.4rem 0.1rem 0.5rem 0.1rem;
+    min-height: 90px;
+  }
+  .competition-logo {
+    min-width: 32px;
+    max-width: 40px;
+    height: 32px;
+  }
+  .competition-logo img {
+    max-height: 28px;
+  }
+  .card-title { font-size: 0.89rem; }
+  .card-description { font-size: 0.8rem; }
+  .wave-price { font-size: 0.85rem; }
+}
+
+/* Footer Redesign */
+.footer {
+  background: #fff;
+  border-top: 1.5px solid #f1f5f9;
+  padding: 0;
+  margin-top: 3rem;
+}
+.footer-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 2.5rem;
+  padding: 2.5rem 0 1.5rem 0;
+}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 180px;
+  gap: 1.2rem;
+}
+.footer-logos {
+  display: flex;
+  gap: 1.2rem;
+  margin-bottom: 0.7rem;
+}
+.footer-logo img {
+  height: 60px;
+  width: 60px;
+  object-fit: contain;
+  transition: transform 0.3s;
+}
+.footer-logo img:hover {
+  transform: scale(1.08);
+}
+.footer-social {
+  display: flex;
+  gap: 1.1rem;
+}
+.footer-social .social-link {
+  background: #f3f4f6;
+  border-radius: 50%;
+  color: #374151;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  transition: background 0.2s, color 0.2s;
+}
+.footer-social .social-link:hover {
+  background: #2563eb;
+  color: #fff;
+}
+.footer-links-col {
+  min-width: 150px;
+  flex: 1 1 0;
+}
+.footer-title {
+  color: #1e293b;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li {
+  margin-bottom: 0.5rem;
+}
+.footer-links a {
+  color: #334155;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.footer-links a:hover {
+  color: #2563eb;
+}
+.contact-info {
+  color: #64748b;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+.footer-bottom {
+  border-top: 1px solid #f1f5f9;
+  margin-top: 1.5rem;
+  padding: 1.1rem 2vw 0.7rem 2vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.98rem;
+  color: #64748b;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+.footer-credit-link {
+  border: 1.5px solid #2563eb;
+  border-radius: 6px;
+  padding: 0.2rem 0.7rem;
+  color: #2563eb;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  text-decoration: none;
+  font-size: 0.98rem;
+  transition: background 0.2s, color 0.2s;
+}
+.footer-credit-link:hover {
+  background: #2563eb;
+  color: #fff;
+}
+@media (max-width: 900px) {
+  .footer-main {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0 1rem 0;
+  }
+  .footer-brand, .footer-links-col {
+    align-items: center;
+    min-width: 0;
+    width: 100%;
+    text-align: center;
+  }
+  .footer-logos {
+    justify-content: center;
+    width: 100%;
+  }
+  .footer-social {
+    justify-content: center;
+    width: 100%;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.7rem;
+    text-align: center;
+    padding: 0.7rem 4vw 0.5rem 4vw;
+  }
+  .footer-credit-link {
+    margin-left: 0.3rem;
+    font-size: 0.97rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Logo header di tengah */
+  .logo-img {
+    display: block;
+    margin: 0 auto;
+  }
+  /* Teks tombol lomba rata tengah */
+  .btn, .btn-large {
+    text-align: center;
+    justify-content: center;
+  }
+  /* Logo pada card lomba di tengah */
+  .competition-logo {
+    margin: 0 auto 0.5rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-wrapper {
+    justify-content: center;
+    position: relative;
+  }
+  .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-img {
+    display: block;
+    margin: 0 auto;
+  }
+  .mobile-toggle {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+@media (min-width: 900px) {
+  .competition-card {
+    transition: box-shadow 0.25s, transform 0.25s, border 0.25s;
+    border: 1.5px solid transparent;
+  }
+  .competition-card:hover {
+    box-shadow: 0 12px 36px rgba(59,130,246,0.18), 0 4px 16px rgba(0,0,0,0.08);
+    transform: translateY(-6px) scale(1.025);
+    border: 1.5px solid #2563eb;
+    z-index: 2;
+  }
+  .competition-card:hover .competition-logo img {
+    transform: scale(1.08);
+    filter: drop-shadow(0 4px 16px rgba(59,130,246,0.18));
+  }
+  .competition-logo img {
+    transition: transform 0.25s, filter 0.25s;
+  }
+}
+
+/* Header fade-in saat load */
+.header {
+  animation: fadeInDown 0.8s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+@keyframes fadeInDown {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Navigation link underline animasi */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: #2563eb;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: left;
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Hero section animasi masuk */
+.hero-center {
+  animation: fadeInUp 1.1s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(40px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.mascot-img {
+  animation: mascotSuperFloat 3.5s ease-in-out infinite, mascotPop 1.2s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+@keyframes mascotSuperFloat {
+  0%   { transform: translateY(0) scale(1) rotate(-2deg); }
+  20%  { transform: translateY(-10px) scale(1.04) rotate(2deg); }
+  50%  { transform: translateY(-22px) scale(1.07) rotate(-3deg); }
+  80%  { transform: translateY(-10px) scale(1.04) rotate(2deg); }
+  100% { transform: translateY(0) scale(1) rotate(-2deg); }
+}
+.hero-buttons .btn, .hero-buttons .btn-large {
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.hero-buttons .btn:hover, .hero-buttons .btn-large:hover {
+  animation: pulseBtn 0.7s;
+  box-shadow: 0 6px 24px rgba(59,130,246,0.18);
+  transform: scale(1.04);
+}
+@keyframes pulseBtn {
+  0% { box-shadow: 0 0 0 0 #fbbf24; }
+  70% { box-shadow: 0 0 0 10px rgba(245,191,36,0); }
+  100% { box-shadow: 0 0 0 0 rgba(245,191,36,0); }
+}
+
+/* Card lomba fade-in saat muncul */
+.competition-card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.7s, transform 0.7s;
+}
+.competition-card.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* FAQ animasi expand/collapse dan icon rotate */
+.faq-answer {
+  transition: max-height 0.4s cubic-bezier(0.25,0.46,0.45,0.94), padding 0.4s, opacity 0.4s;
+  opacity: 0;
+}
+.faq-item.active .faq-answer {
+  opacity: 1;
+}
+.faq-question i {
+  transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.faq-item.active .faq-question i {
+  transform: rotate(180deg) scale(1.2);
+}
+
+/* Footer link underline animasi dan logo/social icon scale */
+.footer-links a {
+  position: relative;
+  overflow: hidden;
+}
+.footer-links a::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 2px;
+  background: #2563eb;
+  transform: scaleX(0);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  transform-origin: left;
+}
+.footer-links a:hover::after {
+  transform: scaleX(1);
+}
+.footer-logo img, .footer-social .social-link {
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.footer-logo img:hover, .footer-social .social-link:hover {
+  transform: scale(1.12) rotate(-3deg);
+  box-shadow: 0 4px 16px rgba(59,130,246,0.10);
+}
+
+/* Underline link dengan gradasi kuning ke biru */
+.nav-link::after, .footer-links a::after {
+  background: #2563eb;
+}
+
+/* Tombol sekunder aksen kuning/emas */
+.btn-secondary {
+  background: #fbbf24;
+  color: #222;
+}
+.btn-secondary:hover {
+  background: #f59e0b;
+  color: #fff;
+}
+
+/* Border card lomba hover jadi ungu */
+@media (min-width: 900px) {
+  .competition-card:hover {
+    border: 1.5px solid #fbbf24;
+  }
+}
+
+/* FAQ icon aktif jadi ungu */
+.faq-item.active .faq-question i {
+  color: #a21caf;
+}
+
+/* Badge aksen ungu */
+.badge-new {
+  background: #a21caf;
+  color: #fff;
+  border-radius: 6px;
+  padding: 0.2em 0.7em;
+  font-size: 0.85em;
+  font-weight: 600;
+  margin-left: 0.5em;
+  display: inline-block;
+}
