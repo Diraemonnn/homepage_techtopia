@@ -14,8 +14,8 @@ html {
 body {
   font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
   line-height: 1.6;
-  color: #222;
-  background: #f3f4f6;
+  color: #fff;
+  background: #000;
   overflow-x: hidden;
 }
 
@@ -37,6 +37,7 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: 'Press Start 2P', monospace;
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 1rem;
@@ -51,8 +52,8 @@ p {
    ========================================================================== */
 
 .header {
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  background: #000;
+  box-shadow: 0 2px 8px rgba(255, 0, 255, 0.5);
   position: fixed;
   width: 100%;
   z-index: 100;
@@ -60,21 +61,10 @@ p {
 }
 
 .header.scrolled {
-  background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  background: #000;
+  box-shadow: 0 2px 20px rgba(255, 0, 255, 0.5);
 }
 
-/* Header always visible and clear on mobile */
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-  background: rgba(255,255,255,0.98);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  padding: 0.5rem 0;
-}
 
 @media (max-width: 900px) {
   .header {
@@ -99,6 +89,7 @@ p {
   height: 40px;
   width: auto;
   transition: transform 0.3s ease;
+  image-rendering: pixelated;
 }
 
 .logo:hover .logo-img {
@@ -113,7 +104,7 @@ p {
 }
 
 .nav-link {
-  color: #222;
+  color: #fff;
   text-decoration: none;
   font-weight: 600;
   position: relative;
@@ -174,9 +165,10 @@ p {
    ========================================================================== */
 
 .btn {
+  font-family: 'Press Start 2P', monospace;
   align-items: center;
-  border: none;
-  border-radius: 8px;
+  border: 4px solid #fff;
+  border-radius: 0;
   cursor: pointer;
   display: inline-flex;
   font-size: 14px;
@@ -187,6 +179,7 @@ p {
   position: relative;
   text-decoration: none;
   transition: all 0.3s ease;
+  image-rendering: pixelated;
 }
 
 .btn::before {
@@ -205,39 +198,40 @@ p {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
-  color: white;
+  background: #ff00ff;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 0 10px #ff00ff;
 }
 
 .btn-primary:hover {
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-  transform: translateY(-2px);
+  background: #fff;
+  color: #ff00ff;
+  box-shadow: 0 0 20px #ff00ff;
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  color: white;
+  background: #00ffff;
+  color: #000;
+  border: 2px solid #000;
+  box-shadow: 0 0 10px #00ffff;
 }
 
 .btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
-  transform: translateY(-2px);
+  background: #000;
+  color: #00ffff;
+  box-shadow: 0 0 20px #00ffff;
 }
 
 .btn-outline {
   background: transparent;
-  border: 2px solid #3b82f6;
-  color: #3b82f6;
+  border: 2px solid #ff00ff;
+  color: #ff00ff;
 }
 
 .btn-outline:hover {
-  background: #3b82f6;
-  color: white;
-  transform: translateY(-2px);
+  background: #ff00ff;
+  color: #fff;
 }
 
 .btn-large {
@@ -259,13 +253,15 @@ p {
   background: url('images/background.png') center/cover no-repeat;
   z-index: 1;
   padding: 120px 0 40px 0;
+  border: 10px solid #fff;
+  box-shadow: 0 0 20px #ff00ff, 0 0 20px #ff00ff inset;
 }
 
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(20, 30, 48, 0.45); /* overlay gelap agar teks tetap terbaca */
+  background: #000;
   z-index: 2;
 }
 
@@ -337,6 +333,7 @@ p {
   outline: none;
   background: none;
   border-radius: 0;
+  image-rendering: pixelated;
 }
 
 .mascot-animate {
@@ -677,178 +674,6 @@ section {
    11. FAQ Section
    ========================================================================== */
 
-.faq {
-  background: linear-gradient(135deg, #18181b 60%, #1e293b 100%);
-  padding: 4rem 0;
-}
-
-.faq-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-.faq-item {
-  background: #23272f;
-  border: 1.5px solid #2C2C2C;
-  border-radius: 12px;
-  margin-bottom: 1.2rem;
-  overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
-  box-shadow: 0 2px 12px rgba(59,130,246,0.06);
-}
-
-.faq-item:hover {
-  border-color: #3b82f6;
-  transform: translateY(-3px) scale(1.01);
-  box-shadow: 0 6px 24px rgba(59,130,246,0.12);
-}
-
-.faq-question {
-  padding: 1.3rem 1.8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  background: #23272f;
-  transition: background-color 0.3s;
-}
-
-.faq-question h3 {
-  font-size: 1.08rem;
-  color: #fbbf24;
-  margin: 0;
-  padding-right: 2rem;
-  line-height: 1.5;
-  font-weight: 700;
-  letter-spacing: 0.01em;
-}
-
-.faq-question i {
-  color: #3b82f6;
-  font-size: 1.3rem;
-  transition: transform 0.3s;
-}
-
-.faq-item.active .faq-question i {
-  transform: rotate(180deg);
-}
-
-.faq-answer {
-  background: #1e222a;
-  padding: 0;
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
-}
-
-.faq-item.active .faq-answer {
-  max-height: 350px;
-  padding: 1.3rem 1.8rem;
-}
-
-.faq-answer p {
-  color: #e5e7eb;
-  margin: 0;
-  font-size: 1.01rem;
-  line-height: 1.7;
-}
-
-/* ==========================================================================
-   12. Footer
-   ========================================================================== */
-
-.footer {
-  background: #222;
-  color: #fff;
-  padding: 2rem 0 1rem 0;
-}
-
-.footer-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 2rem;
-  margin-bottom: 1rem;
-}
-
-.footer-logos {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-
-.footer-logo img {
-  height: 60px;
-  width: 60px;
-  transition: transform 0.3s ease;
-}
-
-.footer-logo:hover img {
-  transform: scale(1.1);
-}
-
-.social-links {
-  display: flex;
-  gap: 1rem;
-}
-
-.social-link {
-  align-items: center;
-  background: #374151;
-  border-radius: 50%;
-  color: white;
-  display: flex;
-  height: 40px;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  width: 40px;
-}
-
-.social-link:hover {
-  background: #3b82f6;
-  transform: translateY(-2px);
-}
-
-.footer-title {
-  color: #f9fafb;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.footer-links {
-  list-style: none;
-}
-
-.footer-links li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-  color: #d1d5db;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-  color: #3b82f6;
-}
-
-.footer-links span {
-  color: #9ca3af;
-}
-
-.contact-info {
-  color: #d1d5db;
-  line-height: 1.6;
-}
-
-.footer-bottom {
-  text-align: center;
-  color: #bbb;
-  font-size: 0.95rem;
-}
 
 /* ==========================================================================
    13. Section Transition Animations
@@ -1211,80 +1036,78 @@ section {
 
 /* FAQ Section Redesign */
 .faq {
-    background: #f8fafc;
-    padding: 4rem 0;
+  background: #000;
+  padding: 4rem 0;
+  border-top: 10px solid #fff;
+  box-shadow: 0 0 20px #00ffff;
 }
 
 .faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
 .faq-item {
-    background: #fff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 12px;
-    margin-bottom: 1.2rem;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.25,0.46,0.45,0.94);
-    box-shadow: 0 2px 12px rgba(59,130,246,0.06);
+  background: #000;
+  border: 4px solid #fff;
+  margin-bottom: 1.2rem;
+  overflow: hidden;
+  box-shadow: 0 0 10px #00ffff, 0 0 10px #00ffff inset;
 }
 
 .faq-item:hover {
-    border-color: #3b82f6;
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 6px 24px rgba(59,130,246,0.12);
+  border-color: #ff00ff;
 }
 
 .faq-question {
-    padding: 1.3rem 1.8rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    background: #fff;
-    transition: background-color 0.3s;
+  padding: 1.3rem 1.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  background: #000;
+  transition: background-color 0.3s;
 }
 
 .faq-question h3 {
-    font-size: 1.08rem;
-    color: #3b82f6;
-    margin: 0;
-    padding-right: 2rem;
-    line-height: 1.5;
-    font-weight: 700;
-    letter-spacing: 0.01em;
+  font-size: 1.08rem;
+  color: #00ffff;
+  margin: 0;
+  padding-right: 2rem;
+  line-height: 1.5;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
 .faq-question i {
-    color: #3b82f6;
-    font-size: 1.3rem;
-    transition: transform 0.3s;
+  color: #ff00ff;
+  font-size: 1.3rem;
+  transition: transform 0.3s;
 }
 
 .faq-item.active .faq-question i {
-    transform: rotate(180deg);
+  transform: rotate(180deg);
 }
 
 .faq-answer {
-    background: #f8fafc;
-    padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+  background: #000;
+  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .faq-item.active .faq-answer {
-    max-height: 350px;
-    padding: 1.3rem 1.8rem;
+  max-height: 350px;
+  padding: 1.3rem 1.8rem;
 }
 
 .faq-answer p {
-    color: #374151;
-    margin: 0;
-    font-size: 1.01rem;
-    line-height: 1.7;
+  color: #fff;
+  margin: 0;
+  font-size: 1.01rem;
+  line-height: 1.7;
 }
 
 /* Media Queries */
